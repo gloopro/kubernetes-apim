@@ -22,7 +22,8 @@ wso2:
 
   database:
     username: "wso2carbon"
-    password: ""
+    password: "wso2carbon"
+    host: "wso2am-mysql-db-service"
 
   # WSO2 Choreo Analytics Parameters
   # If provided, these parameters will be used publish analytics data to Choreo Analytics environment (https://apim.docs.wso2.com/en/latest/observe/api-manager-analytics/configure-analytics/register-for-analytics/).
@@ -34,7 +35,7 @@ wso2:
   deployment:
     dependencies:
       # The configuration should be set to be 'true' if a MySQL database should be spawned as a pod within the cluster
-      mysql: false
+      mysql: true
       # Enable NFS dynamic provisioner for Kubernetes
       nfsServerProvisioner: true
 
@@ -63,7 +64,7 @@ wso2:
       # If a custom image must be used, uncomment 'dockerRegistry' and provide its value
       # dockerRegistry: ""
       imageName: "wso2am"
-      imageTag: "4.0.0-centos"
+      imageTag: "4.0.0"
       # Refer to the Kubernetes documentation on updating images (https://kubernetes.io/docs/concepts/containers/images/#updating-images)
       imagePullPolicy: Always
 
@@ -141,7 +142,7 @@ wso2:
       # If a custom image must be used, uncomment 'dockerRegistry' and provide its value.
       # dockerRegistry: ""
       imageName: "wso2mi"
-      imageTag: "4.0.0-centos"
+      imageTag: "4.0.0"
       # Number of deployment replicas
       replicas: 2
       strategy:
