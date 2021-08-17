@@ -146,6 +146,10 @@ spec:
             name: {{ template "am-single-node.resource.prefix" . }}-am-conf-entrypoint
             defaultMode: 0407
         {{ end }}
+        {{- with .Values.wso2.am.nodeSelector }}
+        nodeSelector:
+          {{- toYaml . | nindent 8 }}
+        {{- end }}
         {{ if .Values.wso2.deployment.dependencies.mysql }}
         - name: mysql-connector-jar
           emptyDir: {}
