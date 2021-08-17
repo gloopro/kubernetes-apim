@@ -130,6 +130,10 @@ spec:
       imagePullSecrets:
         - name: {{ template "am-single-node.resource.prefix" . }}-wso2-private-registry-creds
       {{ end }}
+      {{- with .Values.wso2.am.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       volumes:
         - name: wso2am-conf
           configMap:
@@ -146,10 +150,6 @@ spec:
             name: {{ template "am-single-node.resource.prefix" . }}-am-conf-entrypoint
             defaultMode: 0407
         {{ end }}
-        {{- with .Values.wso2.am.nodeSelector }}
-        nodeSelector:
-          {{- toYaml . | nindent 8 }}
-        {{- end }}
         {{ if .Values.wso2.deployment.dependencies.mysql }}
         - name: mysql-connector-jar
           emptyDir: {}

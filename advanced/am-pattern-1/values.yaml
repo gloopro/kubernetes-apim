@@ -20,6 +20,10 @@ wso2:
     username: ""
     password: ""
 
+  database:
+    username: "wso2carbon"
+    password: ""
+
   # WSO2 Choreo Analytics Parameters
   # If provided, these parameters will be used publish analytics data to Choreo Analytics environment (https://apim.docs.wso2.com/en/latest/observe/api-manager-analytics/configure-analytics/register-for-analytics/).
   choreoAnalytics:
@@ -30,7 +34,7 @@ wso2:
   deployment:
     dependencies:
       # The configuration should be set to be 'true' if a MySQL database should be spawned as a pod within the cluster
-      mysql: true
+      mysql: false
       # Enable NFS dynamic provisioner for Kubernetes
       nfsServerProvisioner: true
 
@@ -76,6 +80,10 @@ wso2:
         # How often (in seconds) to perform the probe
         periodSeconds: 10
 
+      nodeSelector: {
+        eks.amazonaws.com/nodegroup: paypecker-am-private-node-group
+      }
+
       resources:
         # These are the minimum resource recommendations for running WSO2 API Management product profiles
         # as per official documentation (https://apim.docs.wso2.com/en/latest/install-and-setup/install/installation-prerequisites/)
@@ -107,7 +115,7 @@ wso2:
       ingress:
         management:
           # Hostname for API Manager Carbon Management Console, Publisher, DevPortal and Admin Portal
-          hostname: "am.wso2.com"
+          hostname: "am.paypecker.co"
           # Annotations for the API Manager Publisher-DevPortal services Ingress
           annotations:
             kubernetes.io/ingress.class: "nginx"
@@ -117,13 +125,13 @@ wso2:
             nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
         gateway:
           # Hostname for Gateway profile
-          hostname: "gateway.am.wso2.com"
+          hostname: "gateway-am.paypecker.co"
           # Annotations for the API Manager Gateway service Ingress
           annotations:
             kubernetes.io/ingress.class: "nginx"
             nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         websub:
-          hostname: "websub.am.wso2.com"
+          hostname: "websub-am.paypecker.co"
           # Annotations for the API Manager WebSub service Ingress
           annotations:
             kubernetes.io/ingress.class: "nginx"
@@ -155,6 +163,11 @@ wso2:
         # How often (in seconds) to perform the probe.
         periodSeconds: 10
       # These are the minimum resource recommendations for running WSO2 Micro Integrator
+
+      nodeSelector: {
+        eks.amazonaws.com/nodegroup: paypecker-am-private-node-group
+      }
+
       resources:
         requests:
           # The minimum amount of memory that should be allocated for a Pod
@@ -173,12 +186,16 @@ wso2:
       synapseTest:
         enabled: false
 
+      nodeSelector: {
+        eks.amazonaws.com/nodegroup: paypecker-am-private-node-group
+      }
+
       # Configure Ingresses
       ingress:
         # Configure management ingress
         management:
           # Hostname for the Micro Integrator management endpoint.
-          hostname: "management.mi.wso2.com"
+          hostname: "management-mi.paypecker.co"
           # Annotations for the Micro Integrator management Ingress.
           annotations:
             kubernetes.io/ingress.class: "nginx"

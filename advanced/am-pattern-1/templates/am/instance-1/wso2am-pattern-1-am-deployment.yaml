@@ -130,6 +130,10 @@ spec:
       imagePullSecrets:
         - name: {{ template "am-pattern-1.resource.prefix" . }}-am-wso2-private-registry-creds
       {{ end }}
+      {{- with .Values.wso2.deployment.am.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       volumes:
         - name: wso2am-conf
           configMap:
