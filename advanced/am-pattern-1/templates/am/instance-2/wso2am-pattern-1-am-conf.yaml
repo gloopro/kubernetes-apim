@@ -44,14 +44,14 @@ data:
 
     [database.apim_db]
     type = "mysql"
-    url = "jdbc:mysql://metabase-instance-1.cz4xi2df0tar.eu-west-1.rds.amazonaws.com:3306/WSO2AM_DB?useSSL=true&amp;autoReconnect=true&amp;requireSSL=true&amp;verifyServerCertificate=false"
+    url = "jdbc:mysql://metabase-instance-1.cz4xi2df0tar.eu-west-1.rds.amazonaws.com:3306/WSO2AM_DB?useSSL=true&amp;autoReconnect=true&amp;requireSSL=false&amp;verifyServerCertificate=false"
     username = "{{ .Values.wso2.database.username }}"
     password = "{{ .Values.wso2.database.password }}"
     driver = "com.mysql.cj.jdbc.Driver"
 
     [database.shared_db]
     type = "mysql"
-    url = "jdbc:mysql://metabase-instance-1.cz4xi2df0tar.eu-west-1.rds.amazonaws.com:3306/WSO2AM_SHARED_DB?useSSL=true&amp;autoReconnect=true&amp;requireSSL=true&amp;verifyServerCertificate=false"
+    url = "jdbc:mysql://metabase-instance-1.cz4xi2df0tar.eu-west-1.rds.amazonaws.com:3306/WSO2AM_SHARED_DB?useSSL=true&amp;autoReconnect=true&amp;requireSSL=false&amp;verifyServerCertificate=false"
     username = "{{ .Values.wso2.database.username }}"
     password = "{{ .Values.wso2.database.password }}"
     driver = "com.mysql.cj.jdbc.Driver"
