@@ -39,4 +39,4 @@ spec:
       - path: /
         backend:
           serviceName: {{ template "am-pattern-1.resource.prefix" . }}-am-service
-          servicePort: 8021
+          servicePort: 9021
