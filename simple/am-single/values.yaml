@@ -59,6 +59,9 @@ wso2:
           solrIndexedData: 50M
 
     am:
+      nodeSelector: {
+        eks.amazonaws.com/nodegroup: paypecker-am-private-node-group
+      }
       # Container image configurations
       # If a custom image must be used, uncomment 'dockerRegistry' and provide its value
       # dockerRegistry: ""
@@ -79,10 +82,6 @@ wso2:
         initialDelaySeconds: 180
         # How often (in seconds) to perform the probe
         periodSeconds: 10
-
-      nodeSelector: {
-        eks.amazonaws.com/nodegroup: paypecker-am-private-node-group
-      }
 
       resources:
         # These are the minimum resource recommendations for running WSO2 API Management product profiles
