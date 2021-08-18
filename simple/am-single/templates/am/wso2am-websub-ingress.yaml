@@ -22,9 +22,16 @@ metadata:
 {{ toYaml .Values.wso2.deployment.am.ingress.websub.annotations | indent 4 }}
 {{- end }}
 spec:
+  {{- if .Values.wso2.deployment.am.ingress.websub.tls }}
   tls:
-  - hosts:
-    - {{ .Values.wso2.deployment.am.ingress.websub.hostname }}
+    {{- range .Values.wso2.deployment.am.ingress.websub.tls }}
+    - hosts:
+        {{- range .hosts }}
+        - {{ . | quote }}
+        {{- end }}
+      secretName: {{ .secretName }}
+    {{- end }}
+  {{- end }}
   rules:
   - host: {{ .Values.wso2.deployment.am.ingress.websub.hostname }}
     http:
