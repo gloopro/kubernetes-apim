@@ -22,9 +22,16 @@ metadata:
 {{ toYaml .Values.wso2.deployment.mi.ingress.management.annotations | indent 4 }}
 {{- end }}
 spec:
+  {{- if .Values.wso2.deployment.mi.ingress.management.tls }}
   tls:
+    {{- range .Values.wso2.deployment.mi.ingress.management.tls }}
     - hosts:
-        - {{ .Values.wso2.deployment.mi.ingress.management.hostname  | quote }}
+        {{- range .hosts }}
+        - {{ . | quote }}
+        {{- end }}
+      secretName: {{ .secretName }}
+    {{- end }}
+  {{- end }}
   rules:
     - host: {{ .Values.wso2.deployment.mi.ingress.management.hostname | quote }}
       http:
