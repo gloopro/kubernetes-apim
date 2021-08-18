@@ -122,6 +122,11 @@ wso2:
             nginx.ingress.kubernetes.io/affinity: "cookie"
             nginx.ingress.kubernetes.io/session-cookie-name: "route"
             nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
+            cert-manager.io/cluster-issuer: "paypecker-issuer"
+          tls: 
+            - secretName: paypecker-am-tls
+              hosts:
+                - am.paypecker.co
         gateway:
           # Hostname for Gateway profile
           hostname: "gateway-am.paypecker.co"
@@ -129,12 +134,22 @@ wso2:
           annotations:
             kubernetes.io/ingress.class: "nginx"
             nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+            cert-manager.io/cluster-issuer: "paypecker-issuer"
+          tls: 
+            - secretName: paypecker-gateway-am-tls
+              hosts:
+                - gateway-am.paypecker.co
         websub:
           hostname: "websub-am.paypecker.co"
           # Annotations for the API Manager Gateway service Ingress
           annotations:
             kubernetes.io/ingress.class: "nginx"
-            nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"          
+            nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"  
+            cert-manager.io/cluster-issuer: "paypecker-issuer"
+          tls: 
+            - secretName: paypecker-websub-am-tls
+              hosts:
+                - websub-am.paypecker.co        
 
   
 kubernetes:
