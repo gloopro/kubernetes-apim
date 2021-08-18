@@ -22,8 +22,8 @@ wso2:
 
   database:
     username: "wso2carbon"
-    password: "wso2carbonTdfke"
-    host: "wso2.cz4xi2df0tar.eu-west-1.rds.amazonaws.com"
+    password: "wso2carbon"
+    host: "wso2am-mysql-db-service"
 
   # WSO2 Choreo Analytics Parameters
   # If provided, these parameters will be used publish analytics data to Choreo Analytics environment (https://apim.docs.wso2.com/en/latest/observe/api-manager-analytics/configure-analytics/register-for-analytics/).
@@ -35,7 +35,7 @@ wso2:
   deployment:
     dependencies:
       # The configuration should be set to be 'true' if a MySQL database should be spawned as a pod within the cluster
-      mysql: false
+      mysql: true
       # Enable NFS dynamic provisioner for Kubernetes
       nfsServerProvisioner: true
 
