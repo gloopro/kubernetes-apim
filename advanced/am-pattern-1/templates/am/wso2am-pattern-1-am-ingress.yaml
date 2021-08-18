@@ -24,7 +24,7 @@ metadata:
 spec:
   {{- if .Values.wso2.deployment.am.ingress.management.tls }}
   tls:
-    {{- range .Values.wso2.deployment.am.ingress.mangement.tls }}
+    {{- range .Values.wso2.deployment.am.ingress.management.tls }}
     - hosts:
         {{- range .hosts }}
         - {{ . | quote }}
