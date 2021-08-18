@@ -131,7 +131,7 @@ wso2:
                 - am.paypecker.co
         gateway:
           # Hostname for Gateway profile
-          hostname: "api.omni.paypecker.co"
+          hostname: "api-omni.paypecker.co"
           # Annotations for the API Manager Gateway service Ingress
           annotations:
             kubernetes.io/ingress.class: "nginx"
@@ -140,7 +140,7 @@ wso2:
           tls: 
             - secretName: paypecker-gateway-tls
               hosts:
-                - api.omni.paypecker.co
+                - api-omni.paypecker.co
         websub:
           hostname: "websub-am.paypecker.co"
           # Annotations for the API Manager WebSub service Ingress
