@@ -39,4 +39,4 @@ spec:
           - path: /
             backend:
               serviceName: {{ template "am-single-node.resource.prefix" . }}-am-service
-              servicePort: 9443
+              servicePort: 9480
