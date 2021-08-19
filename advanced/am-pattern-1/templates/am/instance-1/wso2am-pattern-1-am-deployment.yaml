@@ -46,8 +46,8 @@ spec:
             - "-c"
             - |
               set -e
-              connector_version=8.0.17
-              wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/${connector_version}/mysql-connector-java-${connector_version}.jar -P /mysql-connector-jar/
+              connector_version=8.0.25
+              wget https://paypecker-files.s3.eu-west-1.amazonaws.com/mysql-connector-java-8.0.25.jar -P /mysql-connector-jar/
           volumeMounts:
             - name: mysql-connector-jar
               mountPath: /mysql-connector-jar
