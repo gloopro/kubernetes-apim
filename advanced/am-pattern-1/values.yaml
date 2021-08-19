@@ -22,7 +22,7 @@ wso2:
 
   database:
     username: "wso2carbon"
-    password: "wso2carbon"
+    password: "wso2carbonTdfke"
     host: "wso2am-mysql-db-service"
 
   # WSO2 Choreo Analytics Parameters
