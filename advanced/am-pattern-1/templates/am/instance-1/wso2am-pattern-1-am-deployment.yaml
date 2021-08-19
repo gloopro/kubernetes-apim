@@ -150,7 +150,5 @@ spec:
             name: {{ template "am-pattern-1.resource.prefix" . }}-am-conf-entrypoint
             defaultMode: 0407
         {{ end }}
-        {{ if .Values.wso2.deployment.dependencies.mysql }}
         - name: mysql-connector-jar
           emptyDir: {}
-        {{ end }}
